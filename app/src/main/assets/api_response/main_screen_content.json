@@ -1,0 +1,39 @@
+{
+  "components": [
+    {
+      "id": "toolbar",
+      "type": "TOOLBAR",
+      "content": {
+        "title": "Server-Driven UI Example"
+      }
+    },
+    {
+      "id": "spacer1",
+      "type": "VERTICAL_SPACE",
+      "properties": {
+        "height": 24
+      }
+    },
+    {
+      "id": "button_static_screen",
+      "type": "TEXT_BUTTON",
+      "content": {
+        "text": "Go To Static Screen"
+      },
+      "properties": {
+        "margin_start": 24,
+        "margin_end": 24,
+        "color": "#000000",
+        "text_color": "#ffffff"
+      },
+      "actions": {
+        "on_click": {
+          "case": "DEEP_LINK",
+          "data": {
+            "url": "sdui://com.example.server_drivenuiexample.static_screen"
+          }
+        }
+      }
+    }
+  ]
+}

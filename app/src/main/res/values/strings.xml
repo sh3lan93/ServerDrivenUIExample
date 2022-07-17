@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Server-Driven UI Example</string>
+    <string name="error_text">Something went wrong</string>
+</resources>
