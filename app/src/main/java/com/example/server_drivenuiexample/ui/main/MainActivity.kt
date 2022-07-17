@@ -6,6 +6,7 @@ import com.example.server_drivenuiexample.R
 import com.example.server_drivenuiexample.base.BaseActivity
 import com.example.server_drivenuiexample.databinding.ActivityMainBinding
 import com.example.server_drivenuiexample.ui.design_system_language.ActionTypes
+import com.example.server_drivenuiexample.ui.utils.ComponentClickListener
 import com.example.server_drivenuiexample.ui.utils.openUri
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.io.IOException
@@ -17,10 +18,10 @@ class MainActivity :
     override val viewModel: MainViewModel by viewModel()
 
     private val controller: MainController by lazy {
-        MainController(onButtonClickListener = onButtonClicked)
+        MainController(buttonClickListener = onButtonClicked)
     }
 
-    private val onButtonClicked: (type: ActionTypes, uri: String) -> Unit = { actionType, uri ->
+    private val onButtonClicked: ComponentClickListener = { actionType, uri ->
         when (actionType) {
             ActionTypes.DEEP_LINK -> openUri(uri)
             ActionTypes.DISMISS -> TODO()

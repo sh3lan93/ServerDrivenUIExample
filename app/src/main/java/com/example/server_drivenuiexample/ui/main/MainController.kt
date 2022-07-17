@@ -8,9 +8,10 @@ import com.example.server_drivenuiexample.ui.design_system_language.ActionTypes
 import com.example.server_drivenuiexample.ui.design_system_language.ComponentsType
 import com.example.server_drivenuiexample.ui.main.epoxy.EpoxyViewsIds
 import com.example.server_drivenuiexample.ui.models.Component
+import com.example.server_drivenuiexample.ui.utils.ComponentClickListener
 
 class MainController(
-    private val onButtonClickListener: (type: ActionTypes, uri: String) -> Unit
+    private val buttonClickListener: ComponentClickListener
 ) :
     EpoxyController(
     ) {
@@ -63,7 +64,7 @@ class MainController(
                     marginEnd(component.properties?.marginEnd ?: 0)
                     text(component.content?.text ?: "")
                     clickListener {
-                        this@MainController.onButtonClickListener.invoke(
+                        this@MainController.buttonClickListener.invoke(
                             component.actions?.onClick?.clickType ?: ActionTypes.UNKNOWN,
                             component.actions?.onClick?.data?.url ?: ""
                         )
