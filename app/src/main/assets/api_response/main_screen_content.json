@@ -34,6 +34,27 @@
           }
         }
       }
+    },
+    {
+      "id": "button_dialog",
+      "type": "TEXT_BUTTON",
+      "content": {
+        "text": "Open Popup dialog"
+      },
+      "properties": {
+        "margin_start": 24,
+        "margin_end": 24,
+        "color": "#000000",
+        "text_color": "#ffffff"
+      },
+      "actions": {
+        "on_click": {
+          "case": "DEEP_LINK",
+          "data": {
+            "url": "sdui://com.example.server_drivenuiexample.static_screen"
+          }
+        }
+      }
     }
   ]
 }
