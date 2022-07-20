@@ -51,7 +51,7 @@
         "on_click": {
           "case": "DEEP_LINK",
           "data": {
-            "url": "sdui://com.example.server_drivenuiexample.static_screen"
+            "url": "sdui://com.example.server_drivenuiexample.main/show_caution_dialog?blocking=true"
           }
         }
       }

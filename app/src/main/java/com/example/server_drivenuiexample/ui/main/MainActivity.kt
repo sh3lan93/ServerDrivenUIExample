@@ -1,5 +1,7 @@
 package com.example.server_drivenuiexample.ui.main
 
+import android.app.AlertDialog
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import com.example.server_drivenuiexample.R
@@ -7,6 +9,7 @@ import com.example.server_drivenuiexample.base.BaseActivity
 import com.example.server_drivenuiexample.databinding.ActivityMainBinding
 import com.example.server_drivenuiexample.ui.design_system_language.ActionTypes
 import com.example.server_drivenuiexample.ui.utils.ComponentClickListener
+import com.example.server_drivenuiexample.ui.utils.PathsConstants
 import com.example.server_drivenuiexample.ui.utils.openUri
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.io.IOException
@@ -57,6 +60,37 @@ class MainActivity :
             )
         }
         return json
+    }
+
+    private fun showCautionDialog(blocking: Boolean) {
+        AlertDialog.Builder(this)
+            .setCancelable(blocking)
+            .setTitle(getString(R.string.caution_dialog_title))
+            .setMessage(getString(R.string.caution_dialog_message))
+            .apply {
+                if (blocking)
+                    setPositiveButton(getString(R.string.ok)) { dialog, _ ->
+                        dialog.dismiss()
+                    }
+            }
+            .create().also {
+                it.show()
+            }
+    }
+
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        intent?.data?.let { data ->
+            when (data.path) {
+                PathsConstants.MAIN_SCREEN_CAUTION_DIALOG_PATH -> showCautionDialog(
+                    data.getBooleanQueryParameter(
+                        PathsConstants.MAIN_SCREEN_CAUTION_DIALOG_BOCKING_PARAM,
+                        false
+                    )
+                )
+                else -> TODO("not implemented yet")
+            }
+        }
     }
 
 }

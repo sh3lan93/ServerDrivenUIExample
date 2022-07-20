@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Server-Driven UI Example</string>
     <string name="error_text">Something went wrong</string>
+    <string name="caution_dialog_title">This is a simple caution dialog</string>
+    <string name="caution_dialog_message">This is a dialog body the blocking behavior is determined from the parameter in the uri</string>
+    <string name="ok">Ok</string>
 </resources>

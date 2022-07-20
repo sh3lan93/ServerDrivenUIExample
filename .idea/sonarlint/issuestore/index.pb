@@ -43,3 +43,5 @@ Vapp/src/main/java/com/example/server_drivenuiexample/ServerDrivenExampleApplica
 Yapp/src/main/java/com/example/server_drivenuiexample/ui/main/epoxy/ButtonClickListener.kt,2/4/248a40c3120e49d6746b88925bc66dc50f9641a2
 y
 Iapp/src/main/java/com/example/server_drivenuiexample/ui/models/Actions.kt,d/a/da572590ef5812c3dc75234697ef9a3a50b4de3c
+ç
+]app/src/main/java/com/example/server_drivenuiexample/ui/design_system_language/ActionTypes.kt,1/6/16eefd85170064030641379b51873fab045e4484
