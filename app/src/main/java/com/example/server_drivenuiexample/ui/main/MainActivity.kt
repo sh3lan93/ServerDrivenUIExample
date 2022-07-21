@@ -3,7 +3,6 @@ package com.example.server_drivenuiexample.ui.main
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import com.example.server_drivenuiexample.R
 import com.example.server_drivenuiexample.base.BaseActivity
 import com.example.server_drivenuiexample.databinding.ActivityMainBinding
@@ -12,7 +11,6 @@ import com.example.server_drivenuiexample.ui.utils.ComponentClickListener
 import com.example.server_drivenuiexample.ui.utils.PathsConstants
 import com.example.server_drivenuiexample.ui.utils.openUri
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import java.io.IOException
 
 class MainActivity :
     BaseActivity<ActivityMainBinding, MainViewModel>(layout = R.layout.activity_main) {
@@ -30,11 +28,12 @@ class MainActivity :
             ActionTypes.DISMISS -> TODO()
             ActionTypes.ASYNC_REQUEST -> TODO()
             ActionTypes.UNKNOWN -> TODO()
+            ActionTypes.TOAST -> TODO()
         }
     }
 
     override fun onCreateInit(savedInstanceState: Bundle?) {
-        val screenContentJson = readJsonFile()
+        val screenContentJson = readJsonFile("api_response/main_screen_content.json")
         binding.rvContent.setController(controller)
 
         screenContentJson?.let {
@@ -44,22 +43,6 @@ class MainActivity :
         viewModel.screenContentResult_.observe(this) {
             controller.screenContent = it
         }
-    }
-
-    private fun readJsonFile(): String? {
-        var json: String? = null
-        try {
-            json = assets.open("api_response/main_screen_content.json").bufferedReader().use {
-                it.readText()
-            }
-        } catch (ioException: IOException) {
-            Log.e(
-                MainActivity::class.java.simpleName,
-                "readJsonFile: ${ioException.localizedMessage}",
-                ioException.cause
-            )
-        }
-        return json
     }
 
     private fun showCautionDialog(blocking: Boolean) {

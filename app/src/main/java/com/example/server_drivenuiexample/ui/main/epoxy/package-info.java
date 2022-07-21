@@ -30,3 +30,12 @@ class Error {
 
 }
 
+@EpoxyDataBindingLayouts({R.layout.imageview})
+class ImageView {
+
+}
+@EpoxyDataBindingLayouts({R.layout.textview})
+class TextView {
+
+}
+

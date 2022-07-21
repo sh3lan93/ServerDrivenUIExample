@@ -13,4 +13,17 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="Header4">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="Price">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="Body">
+        <item name="android:textSize">12sp</item>
+    </style>
+
 </resources>

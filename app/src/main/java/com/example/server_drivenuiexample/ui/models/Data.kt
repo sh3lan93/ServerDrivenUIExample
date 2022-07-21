@@ -7,5 +7,7 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class Data(
     @Json(name = "url")
-    val url: String?
+    val url: String?,
+    @Json(name = "text")
+    val text: String?
 )

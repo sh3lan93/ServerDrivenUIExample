@@ -9,5 +9,9 @@ data class Content(
     @Json(name = "text")
     val text: String?,
     @Json(name = "title")
-    val title: String?
+    val title: String?,
+    @Json(name = "url")
+    val url: String?,
+    @Json(name = "component")
+    val component: Component?
 )

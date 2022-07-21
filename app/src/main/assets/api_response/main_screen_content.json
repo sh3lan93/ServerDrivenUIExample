@@ -55,6 +55,48 @@
           }
         }
       }
+    },
+    {
+      "id": "button_grid_screen",
+      "type": "TEXT_BUTTON",
+      "content": {
+        "text": "Open A Screen With A Complex Content"
+      },
+      "properties": {
+        "margin_start": 24,
+        "margin_end": 24,
+        "color": "#000000",
+        "text_color": "#ffffff"
+      },
+      "actions": {
+        "on_click": {
+          "case": "DEEP_LINK",
+          "data": {
+            "url": "sdui://com.example.server_drivenuiexample.complex_screen?grid_span_count=3&json=complex_screen_content.json"
+          }
+        }
+      }
+    },
+    {
+      "id": "button_grid_screen_2",
+      "type": "TEXT_BUTTON",
+      "content": {
+        "text": "Open A Screen With A Complex Content 2"
+      },
+      "properties": {
+        "margin_start": 24,
+        "margin_end": 24,
+        "color": "#000000",
+        "text_color": "#ffffff"
+      },
+      "actions": {
+        "on_click": {
+          "case": "DEEP_LINK",
+          "data": {
+            "url": "sdui://com.example.server_drivenuiexample.complex_screen?grid_span_count=3&json=complex_screen_content_2.json"
+          }
+        }
+      }
     }
   ]
 }

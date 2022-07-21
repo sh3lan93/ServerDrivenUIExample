@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.example.server_drivenuiexample.ui.design_system_language.Style" />
+
+        <variable
+            name="text"
+            type="String" />
+
+        <variable
+            name="textColor"
+            type="String" />
+
+        <variable
+            name="opacity"
+            type="Float" />
+
+        <variable
+            name="marginStart"
+            type="Integer" />
+
+        <variable
+            name="marginEnd"
+            type="Integer" />
+
+        <variable
+            name="marginTop"
+            type="Integer" />
+
+        <variable
+            name="style"
+            type="Style" />
+
+    </data>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@{text}"
+        app:marginStart="@{marginStart}"
+        app:margin_end="@{marginEnd}"
+        app:margin_top="@{marginTop}"
+        app:opacity="@{opacity}"
+        app:style="@{style}"
+        app:text_color="@{textColor}" />
+</layout>

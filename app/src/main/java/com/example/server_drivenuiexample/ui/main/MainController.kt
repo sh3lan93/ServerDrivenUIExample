@@ -70,7 +70,7 @@ class MainController(
                         )
                     }
                 }
-                ComponentsType.UNKNOWN -> {}
+                ComponentsType.FOOTER, ComponentsType.TEXT_VIEW, ComponentsType.IMAGE_VIEW, ComponentsType.UNKNOWN -> {}
             }
         }
     }
