@@ -10,6 +10,11 @@ class Toolbar {
 
 }
 
+@EpoxyDataBindingLayouts({R.layout.complex_toolbar})
+class ComplexToolbar {
+
+}
+
 @EpoxyDataBindingLayouts({R.layout.space})
 class Space {
 

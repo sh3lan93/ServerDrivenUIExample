@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="title"
+            type="String" />
+
+        <variable
+            name="icon"
+            type="String" />
+
+        <variable
+            name="padding"
+            type="Integer" />
+
+        <variable
+            name="textColor"
+            type="String" />
+
+        <variable
+            name="toolbarColor"
+            type="String" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:backgroundColor="@{toolbarColor}"
+        app:padding="@{padding}">
+
+        <ImageView
+            android:id="@+id/iv_icon"
+            android:layout_width="@dimen/_48dp"
+            android:layout_height="@dimen/_48dp"
+            app:image_url="@{icon}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{title}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_icon"
+            app:layout_constraintTop_toTopOf="parent"
+            app:text_color="@{textColor}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

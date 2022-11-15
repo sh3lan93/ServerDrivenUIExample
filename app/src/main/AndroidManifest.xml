@@ -50,6 +50,9 @@
             android:name=".ui.main.MainActivity"
             android:exported="true"
             android:launchMode="singleTop">
+
+            <nav-graph android:value="@navigation/main_nav" />
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

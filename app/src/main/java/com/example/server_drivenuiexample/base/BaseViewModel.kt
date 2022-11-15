@@ -2,7 +2,6 @@ package com.example.server_drivenuiexample.base
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.server_drivenuiexample.rxutils.IOTransformer
 import com.example.server_drivenuiexample.rxutils.mapToError
 import com.example.server_drivenuiexample.states.Result
 import io.reactivex.rxjava3.core.Single
@@ -15,14 +14,13 @@ open class BaseViewModel : ViewModel() {
         CompositeDisposable()
     }
 
-    fun <Data> Single<Data>.async(livedata: MutableLiveData<Result<Data>>) {
+    fun <Data : Any> Single<Data>.async(livedata: MutableLiveData<Result<Data>>) {
         livedata.value = Result.loading()
-        this.compose(IOTransformer())
-            .subscribe({ data ->
-                livedata.value = Result.success(data = data)
-            }) { throwable ->
-                livedata.value = Result.error(throwable.mapToError())
-            }.addTo(compositeDisposable)
+        this.subscribe({ data ->
+            livedata.value = Result.success(data = data)
+        }) { throwable ->
+            livedata.value = Result.error(throwable.mapToError())
+        }.addTo(compositeDisposable)
     }
 
     override fun onCleared() {

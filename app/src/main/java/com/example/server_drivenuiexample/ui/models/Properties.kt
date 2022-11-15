@@ -1,6 +1,8 @@
 package com.example.server_drivenuiexample.ui.models
 
 
+import com.example.server_drivenuiexample.ui.design_system_language.ScaleType
+import com.example.server_drivenuiexample.ui.utils.mapToScaleType
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -23,5 +25,14 @@ data class Properties(
     @Json(name = "ratio")
     val ratio: String?,
     @Json(name = "opacity")
-    val opacity: Float?
-)
+    val opacity: Float?,
+    @Json(name = "padding")
+    val padding: Int?,
+    @Json(name = "corner_radius")
+    val cornerRadius: Int?,
+    @Json(name = "scale_type")
+    val scaleType: String?
+) {
+    val imageScaleType: ScaleType
+        get() = scaleType?.mapToScaleType() ?: ScaleType.DEFAULT
+}

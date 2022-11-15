@@ -5,7 +5,7 @@ import com.example.server_drivenuiexample.*
 import com.example.server_drivenuiexample.states.Result
 import com.example.server_drivenuiexample.states.ScreenState
 import com.example.server_drivenuiexample.ui.design_system_language.ActionTypes
-import com.example.server_drivenuiexample.ui.design_system_language.ComponentsType
+import com.example.server_drivenuiexample.ui.design_system_language.ComponentsType.*
 import com.example.server_drivenuiexample.ui.main.epoxy.EpoxyViewsIds
 import com.example.server_drivenuiexample.ui.models.Component
 import com.example.server_drivenuiexample.ui.utils.ComponentClickListener
@@ -54,7 +54,7 @@ class ComplexScreenController(
     private fun buildSuccessState(components: List<Component>) {
         components.map { component ->
             when (component.componentType) {
-                ComponentsType.TOOLBAR -> toolbar {
+                TOOLBAR -> toolbar {
                     id(component.id ?: "")
                     title(component.content?.title ?: "")
                     spanSizeOverride { totalSpanCount, _, _ ->
@@ -64,7 +64,7 @@ class ComplexScreenController(
                         totalSpanCount
                     }
                 }
-                ComponentsType.VERTICAL_SPACE -> space {
+                VERTICAL_SPACE -> space {
                     id(component.id ?: "")
                     height(component.properties?.height?.toFloat() ?: 0f)
 
@@ -76,7 +76,7 @@ class ComplexScreenController(
                     }
 
                 }
-                ComponentsType.TEXT_BUTTON -> textButton {
+                TEXT_BUTTON -> textButton {
                     id(component.id ?: "")
                     background(component.properties?.color ?: "")
                     textColor(component.properties?.textColor ?: "")
@@ -96,7 +96,7 @@ class ComplexScreenController(
                         totalSpanCount
                     }
                 }
-                ComponentsType.IMAGE_VIEW -> imageview {
+                IMAGE_VIEW -> imageview {
                     id(component.id ?: "")
                     imageUrl(component.content?.url)
                     ratio(component.properties?.ratio)
@@ -107,7 +107,7 @@ class ComplexScreenController(
                         totalSpanCount
                     }
                 }
-                ComponentsType.TEXT_VIEW -> textview {
+                TEXT_VIEW -> textview {
                     id(component.id ?: "")
                     text(component.content?.text)
                     textColor(component.properties?.textColor)
@@ -121,10 +121,14 @@ class ComplexScreenController(
                         totalSpanCount
                     }
                 }
-                ComponentsType.FOOTER -> component.content?.component?.let { footerComponent ->
+                FOOTER -> component.content?.component?.let { footerComponent ->
                     drawFooterCallback.invoke(footerComponent)
                 }
-                ComponentsType.UNKNOWN -> {}
+                UNKNOWN -> {}
+                COMPLEX_TOOLBAR -> TODO()
+                CAROUSEL -> TODO()
+                CARD -> TODO()
+                else -> {}
             }
         }
     }

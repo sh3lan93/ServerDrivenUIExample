@@ -13,5 +13,13 @@ data class Content(
     @Json(name = "url")
     val url: String?,
     @Json(name = "component")
-    val component: Component?
+    val component: Component?,
+    @Json(name = "icon")
+    val icon: String?,
+    @Json(name = "items")
+    val items: List<Component>?,
+    @Json(name = "properties")
+    val properties: Properties?,
+    @Json(name = "stack")
+    val stack: List<Component>?
 )

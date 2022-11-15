@@ -18,6 +18,10 @@
         <item name="android:textSize">18sp</item>
     </style>
 
+    <style name="Header3">
+        <item name="android:textSize">16sp</item>
+    </style>
+
     <style name="Price">
         <item name="android:textSize">12sp</item>
     </style>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/homeFragment">
+
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.server_drivenuiexample.ui.home.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/offersFragment"
+        android:name="com.example.server_drivenuiexample.ui.offers.OffersFragment"
+        android:label="fragment_offers"
+        tools:layout="@layout/fragment_offers">
+        <deepLink
+            android:id="@+id/deepLink"
+            app:action="android.intent.action.VIEW_ACTION"
+            app:uri="sdui://com.example.server_drivenuiexample.offer" />
+    </fragment>
+
+</navigation>

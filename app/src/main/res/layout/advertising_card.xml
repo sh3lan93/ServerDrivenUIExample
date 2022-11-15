@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.example.server_drivenuiexample.ui.design_system_language.Style" />
+
+        <import type="com.example.server_drivenuiexample.ui.design_system_language.ScaleType" />
+
+        <import type="com.example.server_drivenuiexample.ui.design_system_language.ActionTypes" />
+
+        <import type="com.example.server_drivenuiexample.common.clicklisteners.ButtonClickListener" />
+
+
+        <variable
+            name="adImage"
+            type="String" />
+
+        <variable
+            name="adImageRatio"
+            type="String" />
+
+        <variable
+            name="overlayColor"
+            type="String" />
+
+        <variable
+            name="overlayOpacity"
+            type="Float" />
+
+        <variable
+            name="adText"
+            type="String" />
+
+        <variable
+            name="adTextStyle"
+            type="Style" />
+
+        <variable
+            name="adTextColor"
+            type="String" />
+
+        <variable
+            name="adTextMargin"
+            type="Integer" />
+
+        <variable
+            name="adButtonText"
+            type="String" />
+
+        <variable
+            name="adButtonMargin"
+            type="Integer" />
+
+        <variable
+            name="adButtonTextPadding"
+            type="Integer" />
+
+        <variable
+            name="adButtonColor"
+            type="String" />
+
+        <variable
+            name="adButtonTextColor"
+            type="String" />
+
+        <variable
+            name="adCornerRadius"
+            type="Integer" />
+
+        <variable
+            name="scaleType"
+            type="ScaleType" />
+
+        <variable
+            name="clickListener"
+            type="ButtonClickListener" />
+
+        <variable
+            name="actionType"
+            type="ActionTypes" />
+
+        <variable
+            name="actionUri"
+            type="String" />
+
+
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="@{adCornerRadius}">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_ad"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:image_url="@{adImage}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:ratio="@{adImageRatio}"
+                app:scaleType="@{scaleType}"
+                tools:ignore="ContentDescription"
+                tools:layout_constraintDimensionRatio="2:1" />
+
+            <ImageView
+                android:id="@+id/iv_overlay"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:backgroundColor="@{overlayColor}"
+                app:layout_constraintBottom_toBottomOf="@id/iv_ad"
+                app:layout_constraintEnd_toEndOf="@id/iv_ad"
+                app:layout_constraintStart_toStartOf="@id/iv_ad"
+                app:layout_constraintTop_toTopOf="@id/iv_ad"
+                app:opacity="@{overlayOpacity}"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/tv_ad_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{adText}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:margin_bottom="@{adTextMargin}"
+                app:margin_start="@{adTextMargin}"
+                app:margin_top="@{adTextMargin}"
+                app:style="@{adTextStyle}"
+                app:text_color="@{adTextColor}" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_ad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> clickListener.onButtonClicked(actionType, actionUri)}"
+                android:text="@{adButtonText}"
+                app:buttonBackground="@{adButtonColor}"
+                app:buttonTextColor="@{adButtonTextColor}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:margin_bottom="@{adButtonMargin}"
+                app:margin_end="@{adButtonMargin}"
+                app:padding="@{adButtonTextPadding}" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

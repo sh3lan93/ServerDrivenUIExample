@@ -1,11 +1,14 @@
-package com.example.server_drivenuiexample.ui.main
+package com.example.server_drivenuiexample.ui.controller
 
 import com.airbnb.epoxy.EpoxyController
+import com.airbnb.epoxy.carousel
 import com.example.server_drivenuiexample.*
+import com.example.server_drivenuiexample.common.clicklisteners.ButtonClickListener
 import com.example.server_drivenuiexample.states.Result
 import com.example.server_drivenuiexample.states.ScreenState
 import com.example.server_drivenuiexample.ui.design_system_language.ActionTypes
 import com.example.server_drivenuiexample.ui.design_system_language.ComponentsType
+import com.example.server_drivenuiexample.ui.epoxy_models.ClickableModel
 import com.example.server_drivenuiexample.ui.main.epoxy.EpoxyViewsIds
 import com.example.server_drivenuiexample.ui.models.Component
 import com.example.server_drivenuiexample.ui.utils.ComponentClickListener
@@ -14,7 +17,7 @@ class MainController(
     private val buttonClickListener: ComponentClickListener
 ) :
     EpoxyController(
-    ) {
+    ), ButtonClickListener {
 
     var screenContent: Result<List<Component>>? = null
         set(value) {
@@ -36,12 +39,18 @@ class MainController(
     private fun buildLoadingState() {
         loading {
             id(EpoxyViewsIds.LOADING.name)
+            spanSizeOverride { totalSpanCount, _, _ ->
+                totalSpanCount
+            }
         }
     }
 
     private fun buildErrorState() {
         error {
             id(EpoxyViewsIds.ERROR.name)
+            spanSizeOverride { totalSpanCount, _, _ ->
+                totalSpanCount
+            }
         }
     }
 
@@ -51,10 +60,16 @@ class MainController(
                 ComponentsType.TOOLBAR -> toolbar {
                     id(component.id ?: "")
                     title(component.content?.title ?: "")
+                    spanSizeOverride { _, _, _ ->
+                        component.spanCount ?: 1
+                    }
                 }
                 ComponentsType.VERTICAL_SPACE -> space {
                     id(component.id ?: "")
                     height(component.properties?.height?.toFloat() ?: 0f)
+                    spanSizeOverride { _, _, _ ->
+                        component.spanCount ?: 1
+                    }
                 }
                 ComponentsType.TEXT_BUTTON -> textButton {
                     id(component.id ?: "")
@@ -69,9 +84,45 @@ class MainController(
                             component.actions?.onClick?.data?.url ?: ""
                         )
                     }
+                    spanSizeOverride { _, _, _ ->
+                        component.spanCount ?: 1
+                    }
                 }
                 ComponentsType.FOOTER, ComponentsType.TEXT_VIEW, ComponentsType.IMAGE_VIEW, ComponentsType.UNKNOWN -> {}
+                ComponentsType.COMPLEX_TOOLBAR -> complexToolbar {
+                    id(component.id ?: "")
+                    toolbarColor(component.properties?.color)
+                    textColor(component.properties?.textColor)
+                    title(component.content?.title)
+                    icon(component.content?.icon)
+                    padding(component.properties?.padding)
+                    spanSizeOverride { _, _, _ ->
+                        component.spanCount ?: 1
+                    }
+                }
+                ComponentsType.CAROUSEL -> carousel {
+                    id(component.id ?: "")
+                    numViewsToShowOnScreen(1f)
+                    paddingDp(component.properties?.padding ?: 0)
+                    component.content?.items?.map {
+                        it.toUI()
+                    }?.also {
+                        it.find { it is ClickableModel }?.apply {
+                            (this as ClickableModel).initClickListener(this@MainController)
+                        }
+                        models(it)
+                    }
+                    spanSizeOverride { _, _, _ ->
+                        component.spanCount ?: 1
+                    }
+                }
+                ComponentsType.CARD -> {}
+                else -> {}
             }
         }
+    }
+
+    override fun onButtonClicked(action: ActionTypes, uri: String) {
+        buttonClickListener.invoke(action, uri)
     }
 }
