@@ -9,6 +9,7 @@ import com.example.server_drivenuiexample.states.ScreenState
 import com.example.server_drivenuiexample.ui.design_system_language.ActionTypes
 import com.example.server_drivenuiexample.ui.design_system_language.ComponentsType
 import com.example.server_drivenuiexample.ui.epoxy_models.ClickableModel
+import com.example.server_drivenuiexample.ui.epoxy_models.imageView
 import com.example.server_drivenuiexample.ui.main.epoxy.EpoxyViewsIds
 import com.example.server_drivenuiexample.ui.models.Component
 import com.example.server_drivenuiexample.ui.utils.ComponentClickListener
@@ -88,7 +89,16 @@ class MainController(
                         component.spanCount ?: 1
                     }
                 }
-                ComponentsType.FOOTER, ComponentsType.TEXT_VIEW, ComponentsType.IMAGE_VIEW, ComponentsType.UNKNOWN -> {}
+                ComponentsType.FOOTER, ComponentsType.TEXT_VIEW, ComponentsType.UNKNOWN -> {}
+                ComponentsType.IMAGE_VIEW -> imageView {
+                    id(component.id)
+                    imageUrl(component.content?.url)
+                    ratio(component.properties?.ratio)
+                    scaleType(component.properties?.imageScaleType)
+                    spanSizeOverride { _, _, _ ->
+                        component.spanCount ?: 1
+                    }
+                }
                 ComponentsType.COMPLEX_TOOLBAR -> complexToolbar {
                     id(component.id ?: "")
                     toolbarColor(component.properties?.color)

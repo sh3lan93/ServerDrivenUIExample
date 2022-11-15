@@ -6,14 +6,14 @@ import com.example.server_drivenuiexample.network.services.AppServices
 import io.reactivex.rxjava3.core.Scheduler
 import io.reactivex.rxjava3.core.Single
 
-class HomeContentUseCase(
+class OffersContentUseCase(
     private val service: AppServices,
     private val subscribeOnScheduler: Scheduler,
     private val observeOnScheduler: Scheduler
 ) : BaseSingleUseCase<UIResponse>() {
 
-    override fun buildUseCase(): Single<UIResponse> =
-        service.getHomeContent()
-            .subscribeOn(subscribeOnScheduler)
-            .observeOn(observeOnScheduler)
+
+    override fun buildUseCase(): Single<UIResponse> = service.getOffersContent()
+        .subscribeOn(subscribeOnScheduler)
+        .observeOn(observeOnScheduler)
 }
