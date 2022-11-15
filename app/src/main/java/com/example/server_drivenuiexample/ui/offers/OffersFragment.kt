@@ -2,7 +2,9 @@ package com.example.server_drivenuiexample.ui.offers
 
 import android.net.Uri
 import android.os.Bundle
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.server_drivenuiexample.R
 import com.example.server_drivenuiexample.base.BaseFragment
 import com.example.server_drivenuiexample.databinding.FragmentOffersBinding
@@ -13,6 +15,8 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class OffersFragment :
     BaseFragment<FragmentOffersBinding, OffersViewModel>(layoutId = R.layout.fragment_offers) {
+
+    private val args: OffersFragmentArgs by navArgs()
 
     override val viewmodel: OffersViewModel by viewModel()
 
@@ -32,6 +36,7 @@ class OffersFragment :
 
     override fun onCreateInit(savedInstanceState: Bundle?) {
         binding.content.setController(controller)
+        Toast.makeText(requireContext(), "${args.offerId}", Toast.LENGTH_SHORT).show()
         viewmodel.getOffers()
         observeContent()
     }
