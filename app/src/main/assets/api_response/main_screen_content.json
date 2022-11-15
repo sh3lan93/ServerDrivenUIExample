@@ -97,6 +97,27 @@
           }
         }
       }
+    },
+    {
+      "id": "button_grid_screen_3",
+      "type": "TEXT_BUTTON",
+      "content": {
+        "text": "HESHAM BUTTON"
+      },
+      "properties": {
+        "margin_start": 24,
+        "margin_end": 24,
+        "color": "#000000",
+        "text_color": "#ffffff"
+      },
+      "actions": {
+        "on_click": {
+          "case": "DEEP_LINK",
+          "data": {
+            "url": "sdui://com.example.server_drivenuiexample.complex_screen?grid_span_count=3&json=complex_screen_content_2.json"
+          }
+        }
+      }
     }
   ]
 }

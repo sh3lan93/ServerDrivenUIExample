@@ -43,8 +43,6 @@ Wapp/src/main/java/com/example/server_drivenuiexample/ui/utils/ComponentClickLis
 bapp/src/main/java/com/example/server_drivenuiexample/ui/complex_content/ComplexContentViewModel.kt,4/7/47554b7aad382e2f865ce9ec1bdf920831cb2643
 @
 app/build.gradle,f/4/f4a01d6a4fcb971362ec00a83903fd3902f52164
-P
- app/src/main/AndroidManifest.xml,8/c/8c55c3ccc257e5907959013f99656e4c8ec3903e
 Ñ
 Tapp/src/main/java/com/example/server_drivenuiexample/ui/utils/ComponentTypeMapper.kt,8/d/8dcee6a9d922f222e460d3949fccb78ebd877070
 Ñ
@@ -55,3 +53,29 @@ Wapp/src/main/java/com/example/server_drivenuiexample/ui/design_system_language/
 Lapp/src/main/java/com/example/server_drivenuiexample/ui/utils/BindAdapter.kt,e/d/edff8db3cd106293a00d31ad9ee403f1c3a3743c
 ç
 ]app/src/main/java/com/example/server_drivenuiexample/ui/design_system_language/ActionTypes.kt,1/6/16eefd85170064030641379b51873fab045e4484
+y
+Iapp/src/main/java/com/example/server_drivenuiexample/ui/models/Content.kt,2/2/2260e9deef98dba0c36a6028dd01df0dc0a72d47
+|
+Lapp/src/main/java/com/example/server_drivenuiexample/ui/main/MainActivity.kt,3/3/3377aeb44e40ca04b7999627a9ce170b3f80d609
+|
+Lapp/src/main/java/com/example/server_drivenuiexample/ui/models/Properties.kt,7/3/735f8c5a4665ff1abc55e220b9291b76667f0de3
+y
+Iapp/src/main/java/com/example/server_drivenuiexample/ui/models/Actions.kt,d/a/da572590ef5812c3dc75234697ef9a3a50b4de3c
+y
+Iapp/src/main/java/com/example/server_drivenuiexample/ui/models/OnClick.kt,d/0/d0f4e9ddc7e823c628c8407c58df42443d1d057d
+v
+Fapp/src/main/java/com/example/server_drivenuiexample/ui/models/Data.kt,5/8/5802503c10180dbdfea94d995bc01d5666b97d37
+
+Oapp/src/main/java/com/example/server_drivenuiexample/ui/utils/PathsConstants.kt,1/4/140c981d3d3db3ac74b6b042c4216821c4075b11
+ê
+`app/src/main/java/com/example/server_drivenuiexample/ui/design_system_language/ComponentsType.kt,c/7/c702ab4aa032bce0fe1a501f54d5ed5261c5a5ba
+ë
+aapp/src/main/java/com/example/server_drivenuiexample/ui/complex_content/ComplexContentActivity.kt,a/2/a247ace39a8df95f115c2427019cf057fd15afe6
+P
+ app/src/main/AndroidManifest.xml,8/c/8c55c3ccc257e5907959013f99656e4c8ec3903e
+í
+bapp/src/main/java/com/example/server_drivenuiexample/ui/complex_content/ComplexScreenController.kt,2/5/25d392698c01020bbd2a4457c10cb5d55750a911
+{
+Kapp/src/main/java/com/example/server_drivenuiexample/ui/models/Component.kt,9/4/9420a47ccd15142d60184b27944f66a29ee99054
+~
+Napp/src/main/java/com/example/server_drivenuiexample/ui/main/MainController.kt,b/2/b2a8c5cbea34f23252fff3cc50890db0d53855fd
