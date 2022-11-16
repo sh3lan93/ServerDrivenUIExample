@@ -18,12 +18,27 @@
         tools:layout="@layout/fragment_offers">
         <argument
             android:name="offer_id"
-            app:argType="long"
-            android:defaultValue="-1L"/>
+            android:defaultValue="-1L"
+            app:argType="long" />
         <deepLink
             android:id="@+id/deepLink"
             app:action="android.intent.action.VIEW_ACTION"
             app:uri="sdui://com.example.server_drivenuiexample.offer/{offer_id}" />
+    </fragment>
+    <fragment
+        android:id="@+id/productFragment"
+        android:name="com.example.server_drivenuiexample.ui.product.ProductFragment"
+        android:label="ProductFragment"
+        tools:layout="@layout/fragment_product">
+
+        <argument
+            android:name="sku"
+            app:argType="string" />
+
+        <deepLink
+            android:id="@+id/deepLink2"
+            app:action="android.intent.action.VIEW_ACTION"
+            app:uri="product://com.example.server_drivenuiexample.product/{sku}" />
     </fragment>
 
 </navigation>

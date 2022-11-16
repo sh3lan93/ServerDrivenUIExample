@@ -2,6 +2,8 @@ package com.example.server_drivenuiexample.ui.home
 
 import android.net.Uri
 import android.os.Bundle
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -29,8 +31,15 @@ class HomeFragment :
             ActionTypes.DEEP_LINK -> findNavController().navigate(Uri.parse(uri))
             ActionTypes.DISMISS -> TODO()
             ActionTypes.ASYNC_REQUEST -> TODO()
-            ActionTypes.TOAST -> TODO()
+            ActionTypes.TOAST -> Toast.makeText(
+                requireContext(),
+                getString(R.string.app_name),
+                Toast.LENGTH_SHORT
+            ).show()
             ActionTypes.UNKNOWN -> TODO()
+            ActionTypes.DIALOG -> {
+                showCautionDialog(true)
+            }
         }
     }
 
@@ -58,6 +67,22 @@ class HomeFragment :
 
             controller.screenContent = result
         }
+    }
+
+    private fun showCautionDialog(blocking: Boolean = false) {
+        AlertDialog.Builder(requireContext())
+            .setCancelable(blocking)
+            .setTitle(getString(R.string.caution_dialog_title))
+            .setMessage(getString(R.string.caution_dialog_message))
+            .apply {
+                if (blocking)
+                    setPositiveButton(getString(R.string.ok)) { dialog, _ ->
+                        dialog.dismiss()
+                    }
+            }
+            .create().also {
+                it.show()
+            }
     }
 
 }

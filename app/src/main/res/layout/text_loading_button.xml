@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.example.server_drivenuiexample.ui.main.epoxy.ButtonClickListener" />
+
+        <import type="com.example.server_drivenuiexample.ui.models.Component.ComponentLoadingStatus" />
+
+        <import type="android.view.View" />
+
+
+        <variable
+            name="text"
+            type="String" />
+
+        <variable
+            name="background"
+            type="String" />
+
+        <variable
+            name="textColor"
+            type="String" />
+
+        <variable
+            name="marginStart"
+            type="Integer" />
+
+        <variable
+            name="marginEnd"
+            type="Integer" />
+
+        <variable
+            name="clickListener"
+            type="ButtonClickListener" />
+
+        <variable
+            name="componentLoadingStatus"
+            type="ComponentLoadingStatus" />
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> clickListener.onClick()}"
+            android:text="@{text}"
+            android:textAllCaps="false"
+            android:visibility="@{componentLoadingStatus == ComponentLoadingStatus.DEFAULT ? View.VISIBLE : View.INVISIBLE, default = visible}"
+            app:buttonBackground="@{background}"
+            app:buttonTextColor="@{textColor}"
+            app:marginEnd="@{marginEnd}"
+            app:marginStart="@{marginStart}"
+            tools:text="Text Button" />
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="@{componentLoadingStatus == ComponentLoadingStatus.LOADING ? View.VISIBLE : View.INVISIBLE, default = invisible}" />
+    </FrameLayout>
+</layout>

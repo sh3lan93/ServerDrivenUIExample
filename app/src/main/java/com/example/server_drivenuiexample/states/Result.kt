@@ -14,6 +14,9 @@ class Result<Data>(
         fun <Data> success(data: Data): Result<Data> =
             Result(state = ScreenState.SUCCESS, data = data)
 
+        fun success(): Result<Any> =
+            Result(state = ScreenState.SUCCESS)
+
         fun <Data> error(error: IError): Result<Data> =
             Result(state = ScreenState.ERROR, error = error)
     }

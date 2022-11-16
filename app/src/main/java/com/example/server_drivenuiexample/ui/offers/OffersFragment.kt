@@ -31,6 +31,7 @@ class OffersFragment :
             ActionTypes.ASYNC_REQUEST -> TODO()
             ActionTypes.TOAST -> TODO()
             ActionTypes.UNKNOWN -> TODO()
+            else -> {}
         }
     }
 

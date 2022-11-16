@@ -25,6 +25,11 @@ class TextButton {
 
 }
 
+@EpoxyDataBindingLayouts({R.layout.text_loading_button})
+class TextLoadingButton {
+
+}
+
 @EpoxyDataBindingLayouts({R.layout.loading})
 class Loading {
 
@@ -39,6 +44,7 @@ class Error {
 class ImageView {
 
 }
+
 @EpoxyDataBindingLayouts({R.layout.textview})
 class TextView {
 

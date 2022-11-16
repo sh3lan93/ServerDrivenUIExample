@@ -1,6 +1,7 @@
 package com.example.server_drivenuiexample.ui.models
 
 
+import androidx.databinding.ObservableField
 import com.airbnb.epoxy.EpoxyModel
 import com.example.server_drivenuiexample.ui.design_system_language.ComponentsType
 import com.example.server_drivenuiexample.ui.design_system_language.Style
@@ -34,6 +35,9 @@ data class Component(
 
     val componentStyle: Style
         get() = style?.mapToStyle() ?: Style.UNKNOWN
+
+    val componentLoadingStatus: ObservableField<ComponentLoadingStatus> =
+        ObservableField(ComponentLoadingStatus.DEFAULT)
 
     fun toUI(): EpoxyModel<*> {
         return when (componentType) {
@@ -72,5 +76,10 @@ data class Component(
             }
             else -> TODO()
         }
+    }
+
+    enum class ComponentLoadingStatus {
+        DEFAULT,
+        LOADING
     }
 }

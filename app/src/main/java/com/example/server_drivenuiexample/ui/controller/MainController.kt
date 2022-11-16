@@ -89,7 +89,22 @@ class MainController(
                         component.spanCount ?: 1
                     }
                 }
-                ComponentsType.FOOTER, ComponentsType.TEXT_VIEW, ComponentsType.UNKNOWN -> {}
+                ComponentsType.TEXT_VIEW -> textview {
+                    id(component.id ?: "")
+                    text(component.content?.text)
+                    textColor(component.properties?.textColor)
+                    marginStart(component.properties?.marginStart)
+                    marginEnd(component.properties?.marginEnd)
+                    marginTop(component.properties?.marginTop)
+                    style(component.componentStyle)
+                    spanSizeOverride { totalSpanCount, _, _ ->
+                        if (component.spanCount != null)
+                            return@spanSizeOverride component.spanCount
+                        totalSpanCount
+                    }
+                }
+                ComponentsType.UNKNOWN -> {}
+                ComponentsType.FOOTER -> {}
                 ComponentsType.IMAGE_VIEW -> imageView {
                     id(component.id)
                     imageUrl(component.content?.url)
@@ -127,12 +142,40 @@ class MainController(
                     }
                 }
                 ComponentsType.CARD -> {}
-                else -> {}
+                ComponentsType.TEXT_LOADING_BUTTON -> textLoadingButton {
+                    id(component.id)
+                    background(component.properties?.color ?: "")
+                    textColor(component.properties?.textColor ?: "")
+                    marginStart(component.properties?.marginStart ?: 0)
+                    marginEnd(component.properties?.marginEnd ?: 0)
+                    text(component.content?.text ?: "")
+                    clickListener {
+                        component.componentLoadingStatus.set(Component.ComponentLoadingStatus.LOADING)
+                        this@MainController.requestModelBuild()
+
+                        this@MainController.buttonClickListener.invoke(
+                            component.actions?.onClick?.clickType ?: ActionTypes.UNKNOWN,
+                            component.actions?.onClick?.request ?: ""
+                        )
+                    }
+                    componentLoadingStatus(component.componentLoadingStatus.get())
+                    spanSizeOverride { _, _, _ ->
+                        component.spanCount ?: 1
+                    }
+                }
+                ComponentsType.OVERLAY -> {}
             }
         }
     }
 
     override fun onButtonClicked(action: ActionTypes, uri: String) {
         buttonClickListener.invoke(action, uri)
+    }
+
+    fun updateTextLoadingButtonStatusToDefault(){
+        screenContent?.fetchData()?.find { it.componentType == ComponentsType.TEXT_LOADING_BUTTON }?.let {
+            it.componentLoadingStatus.set(Component.ComponentLoadingStatus.DEFAULT)
+            requestModelBuild()
+        }
     }
 }

@@ -11,5 +11,6 @@ enum class ComponentsType {
     TEXT_VIEW,
     FOOTER,
     OVERLAY,
+    TEXT_LOADING_BUTTON,
     UNKNOWN
 }
