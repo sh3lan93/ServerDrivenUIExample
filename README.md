@@ -11,7 +11,7 @@ Android application that shows how to draw your screen UI from a remote response
 
 ### Key Terms
 
-- Design Language System (DLS)
+- [Design Language System (DLS)](https://karrisaarinen.com/dls/)
   <br/>Set of reusable elements like a visual language, UI kit, front components, and various documentation. It helps designers to handle design at scale. It is like of series of elements that can be reused by an entire team.
 
 ### Prerequisites
