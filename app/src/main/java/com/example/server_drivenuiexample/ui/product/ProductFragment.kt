@@ -33,6 +33,7 @@ class ProductFragment :
             ActionTypes.ASYNC_REQUEST -> viewmodel.handleNetworkRequest(uri, args.sku)
             ActionTypes.TOAST -> TODO()
             ActionTypes.UNKNOWN -> TODO()
+            else -> {}
         }
     }
 
